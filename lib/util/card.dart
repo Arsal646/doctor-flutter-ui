@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Mycard extends StatelessWidget {
-  const Mycard({Key? key}) : super(key: key);
+  final String iconPath;
+  final String title;
+  const Mycard({
+    Key? key,
+    required this.iconPath,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,19 +16,19 @@ class Mycard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.blue.shade100,
+          color: Colors.blue.shade200,
         ),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Row(
             children: [
               Image.network(
-                'images/tooth.png',
+                iconPath,
                 height: 40,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text('Dentis'),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text(title),
               ),
             ],
           ),

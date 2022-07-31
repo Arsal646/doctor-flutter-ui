@@ -1,5 +1,7 @@
 import 'package:design_practice/util/card.dart';
+import 'package:design_practice/util/doctor_card.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -76,35 +78,46 @@ class _HomepageState extends State<Homepage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // ignore: sized_box_for_whitespace
                     Container(
-                      color: Colors.blue,
                       height: 100,
                       width: 100,
+                      child: Lottie.network(
+                          'https://assets2.lottiefiles.com/packages/lf20_tutvdkg0.json'),
                     ),
                     const SizedBox(
                       width: 20,
                     ),
-                    Column(
-                      children: [
-                        const Text('How to you feel?'),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        const Text('Fill out your medical Card right now'),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'How to you feel?',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Get Started'),
+                          const SizedBox(
+                            height: 5,
                           ),
-                        )
-                      ],
+                          const Text('Fill out your medical Card right now'),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text('Get Started'),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -132,12 +145,73 @@ class _HomepageState extends State<Homepage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: const [
-                Mycard(),
-                Mycard(),
-                Mycard(),
-                Mycard(),
-                Mycard(),
+                Mycard(
+                  title: 'Dentist',
+                  iconPath: 'images/tooth.png',
+                ),
+                Mycard(
+                  title: 'Surgon',
+                  iconPath: 'images/doctor.png',
+                ),
+                Mycard(
+                  title: 'Doctor',
+                  iconPath: 'images/medical-report.png',
+                ),
+                Mycard(
+                  title: 'Gyno',
+                  iconPath: 'images/doctor.png',
+                ),
               ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  'Doctor List',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'See All',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          // ignore: sized_box_for_whitespace
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            // ignore: sized_box_for_whitespace
+            child: Container(
+              height: 250,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  DoctorCard(),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  DoctorCard(),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  DoctorCard(),
+                ],
+              ),
             ),
           )
         ],
